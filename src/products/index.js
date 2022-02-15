@@ -21,7 +21,7 @@ productsRouter
                 return res.status(400).send()
             }
 
-            const newProduct = new ProductModel(req.body)
+            const newProduct = await new ProductModel(req.body)
             await newProduct.save()
            
             res.send(newProduct)
@@ -45,7 +45,7 @@ productsRouter
 
         if (!product) {
             res.status(404).send()
-        } else res.send(product)
+        } else res.sendStatus(204)
             
         } catch (error) {
             console.log("here")

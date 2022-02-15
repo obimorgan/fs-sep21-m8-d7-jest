@@ -16,13 +16,16 @@ describe("Just trying out Jest and making sure it's all good", () => {
     })
 
     test("that false is not true", () => {
-        expect(false).not.toBe(false);
+        expect(false).not.toBe(true);
     })
 })
 
 describe("Testing the endpoints for our express app", () => {
 
+
+
     beforeAll((done) => {
+        console.log(process.env.MONGO_URL)
         mongoose.connect(process.env.MONGO_URL + '/test', { useNewUrlParser: true }, () => {
             console.log("Connected to Mongo")
             done()
@@ -73,7 +76,7 @@ describe("Testing the endpoints for our express app", () => {
 
     it("tests if the the DELETE /products/:id returns 204 if the product is successfully deleted",
         async () => {
-            const response = await request.delete(`/products/${productId}`)
+            const response = await request.delete(`/products/${createdProductId}`)
             expect(response.status).toBe(204)
         })
     
@@ -85,10 +88,7 @@ describe("Testing the endpoints for our express app", () => {
     
 
     afterAll(done => {
-        mongoose.connection.dropDatabase()
-            .then(() => {
-                return mongoose.connection.close()
-            })
+        mongoose.connection.close()
             .then(() => {
                 done()
             })
