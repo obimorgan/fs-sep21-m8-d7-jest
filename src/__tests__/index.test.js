@@ -16,7 +16,7 @@ describe("Just trying out Jest and making sure it's all good", () => {
     })
 
     test("that false is not true", () => {
-        expect(false).not.toBe(true);
+        expect(false).not.toBe(false);
     })
 })
 
