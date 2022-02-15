@@ -52,6 +52,12 @@ describe("Testing the endpoints for our express app", () => {
         expect(response.body.name).toBe(validProduct.name)
     })
 
+    it("should test that the GET /products/:id returns 404 on a non-existent product", async () => {
+        const response = await request.get("/products/123456123456123456123456")
+
+        expect(response.status).toBe(404)
+    })
+
     afterAll(done => {
         mongoose.connection.dropDatabase()
             .then(() => {

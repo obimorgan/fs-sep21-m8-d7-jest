@@ -1,5 +1,5 @@
 import express from 'express';
-import { ProductModel } from './model';
+import { ProductModel } from './model.js';
 
 
 const productsRouter = express.Router();
@@ -20,7 +20,9 @@ productsRouter
     .get("/:id", async (req, res) => {
         const product = await ProductModel.findById(req.params.id)
 
-        res.send(product)
+        if (!product) {
+            res.status(404).send()
+        } else res.send(product)
     })
 
 export default productsRouter

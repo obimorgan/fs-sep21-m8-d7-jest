@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll"
+    "watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
