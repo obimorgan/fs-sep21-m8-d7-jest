@@ -40,6 +40,16 @@ describe("Testing the endpoints for our express app", () => {
         price: 100
     }
 
+    const invalidProduct = {
+        name: "Invalid Product",
+    }
+
+    it("should test that the POST /products doesnt work with wrong product data", async () => {
+        const response = await request.post("/products").send(invalidProduct)
+
+        expect(response.status).toBe(400)
+    })
+
     let createdProductId
     it("should test that the POST /products actually creates a product", async () => {
         const response = await request.post("/products").send(validProduct)
