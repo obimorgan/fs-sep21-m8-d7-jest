@@ -8,6 +8,11 @@ productsRouter
     .post('/', async (req, res) => {
 
         try {
+
+            if (!req.body.name || !req.body.price) {
+                return res.status(400).send()
+            }
+
             const newProduct = new ProductModel(req.body)
             await newProduct.save()
 
