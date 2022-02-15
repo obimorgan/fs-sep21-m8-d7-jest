@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
-    "dev": "nodemon -r dotenv/config src/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
+    "dev": "nodemon -e js -r dotenv/config ./src/index.js",
     "start": "node src/index.js"
   },
   "keywords": [],
@@ -16,7 +16,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
-    "mongoose": "^6.2.1"
+    "mongoose": "^6.2.1",
+    "run": "^1.4.0",
+    "test": "^0.6.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
