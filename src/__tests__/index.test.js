@@ -71,6 +71,19 @@ describe("Testing the endpoints for our express app", () => {
         expect(response.status).toBe(404)
     })
 
+    it("tests if the the DELETE /products/:id returns 204 if the product is successfully deleted",
+        async () => {
+            const response = await request.delete(`/products/${productId}`)
+            expect(response.status).toBe(204)
+        })
+    
+    it("tests the DELETE /products/:id returns 204 if id is not a valid id",
+        async () => {
+        const response = await request.get("/products/123456123456123456123456")
+        expect(response.status).toBe(404)
+        })
+    
+
     afterAll(done => {
         mongoose.connection.dropDatabase()
             .then(() => {
