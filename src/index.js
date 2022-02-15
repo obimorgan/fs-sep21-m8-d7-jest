@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 const port = process.env.PORT || 3000
 
 
-mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true },
+mongoose.connect(process.env.MONGO_URL + '/prod', { useNewUrlParser: true },
     () => {
         console.log("Connected to Mongo")
         app.listen(port, () => {

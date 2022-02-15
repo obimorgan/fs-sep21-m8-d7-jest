@@ -2,6 +2,9 @@ import { app } from '../app.js'
 import supertest from "supertest"
 import mongoose from "mongoose"
 
+import dotenv from "dotenv"
+dotenv.config()
+
 const request = supertest(app)
 
 // Describing the test suite purposes: which behaviors of our applications are tested.
@@ -20,7 +23,7 @@ describe("Just trying out Jest and making sure it's all good", () => {
 describe("Testing the endpoints for our express app", () => {
 
     beforeAll((done) => {
-        mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true }, () => {
+        mongoose.connect(process.env.MONGO_URL + '/test', { useNewUrlParser: true }, () => {
             console.log("Connected to Mongo")
             done()
         })
